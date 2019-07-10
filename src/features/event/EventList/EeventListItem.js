@@ -5,15 +5,15 @@ import EventListAttendee from './EventListAttendee';
     render() {
       const {event} = this.props
         return (
-                 <Segment.Group>
+                 <Segment.Group key={event.id}>
                     <Segment>
                       <Item.Group>
                         <Item>
                           <Item.Image size="tiny" circular src={event.hostPhotoURL} />
                           <Item.Content>
-                            <Item.Header as="a">{event.title}</Item.Header>
+                            <Item.Header>{event.title}</Item.Header>
                             <Item.Description>
-                              Hosted by <a>{event.hostedBy}</a>
+                              Hosted by {event.hostedBy}
                             </Item.Description>
                           </Item.Content>
                         </Item>
@@ -27,7 +27,7 @@ import EventListAttendee from './EventListAttendee';
                     </Segment>
                     <Segment secondary>
                       <List horizontal>
-                      {event.attendees.map((attendee) => {
+                      {event.attendee && event.attendees.map((attendee) => {
                         return (
                           <EventListAttendee key={attendee.id} attendee={attendee}/>
                         )
